@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-group">
                         <label for="text">Costo del Vehículo:<label>
-                        <input type="text" name="costo" class="form-control" required pattern="[0-9]+">
+                        <input type="text" name="costo" class="form-control" id="costo"   required pattern="[0-9]+">
                     </div>
                     <form>
                         <div class="form-group">
@@ -87,23 +87,29 @@ if (name.validity.patternMismatch) {
 }
 });
 
-const mail = document.getElementById("mail");
+const costo = document.getElementById("costo");
 
-mail = document.getElementById("mail").value;
-if( !(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/.test(valor)) ) {
-
-
-  return false;
-} else{
-    mail.setCustomValidity("Ingresa una Direccion de Correo Electronico valido");
+costo.addEventListener("input", function (event) {
+if (costo.validity.patternMismatch) {
+    
+     costo.setCustomValidity("Ingresa solo números en este campo");
+} else {
+    
+    costo.setCustomValidity("");
+}
 });
 
+const email = document.getElementById("mail");
 
+email.addEventListener("input", function (event) {
+if (email.validity.typeMismatch) {
+    email.setCustomValidity("Introduce una dirección de correo electrónico válida ");
+} else {
+    email.setCustomValidity("");
+}
+});
 
-
-
-
-        </script>
+</script>
     <script src="js/jquery-3.4.1.slim.min.js" ></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
