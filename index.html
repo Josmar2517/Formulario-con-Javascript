@@ -4,7 +4,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="utf-8">
         <title>Registro de Vehiculos </title>
-        <link rel="stylesheet" href="js/javascrip.js">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="icon" type="img/jpg" href="img/titulo.jpg"/>
         <link rel="stylesheet" type="text/css" href="css/estilos.css">  
@@ -30,37 +29,81 @@
     </head>
     
     <body>
+        <form>
         <div class="container" id="registro-form">
             <div class="image"></div>
             <div class="padre">
                 <h1>Registra tu Automovil</h1>
                 <form>
                     <div class="form-group">
-                        <label for="username">Código del Vehículo:</label>
-                        <input type="text" class="form-control" id="username" placeholder="Código">
+                        <label for="username">Código del Vehículo:<label>
+                        <input type="text" name="1" class="form-control" id="codigo" required pattern="[0-9]+"">
                     </div>
                     <div class="form-group">
-                        <label for="text">Nombre del Vehículo:</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                        <label for="text">Nombre del Vehículo:<label>
+                        <input type="text" name="nombre" class="form-control" id="nombre" required pattern="[A-Za-z]+">
                     </div>
                     <div class="form-group">
-                        <label for="text">Costo del Vehículo:</label>
-                        <input type="text" class="form-control" placeholder="Costo">
+                        <label for="text">Costo del Vehículo:<label>
+                        <input type="text" name="costo" class="form-control" required pattern="[0-9]+">
                     </div>
                     <form>
                         <div class="form-group">
-                          <label for="text">Email del Fabricante:</label>
-                          <input type="email" class="form-control" placeholder="Email">
+                          <label for="text">Email del Fabricante:<label>
+                          <input type="email" name="email" class="form-control" id="mail"  required pattern="[A-Za-z]+">
                 
                         </div>
                       </form>
                       
                     <div class="form-group">
-                        <button type="button" class="btn btn-light">Enviar</button>
+                        <button>Enviar</button>
                     </div>
                 </form>
             </div>
-        </div>
+        </div>   
+    </form>
+        <script>
+const code = document.getElementById("codigo");
+
+code.addEventListener("input", function (event) {
+if (code.validity.patternMismatch) {
+    
+     code.setCustomValidity("Ingresa solo números en este campo");
+} else {
+    
+    code.setCustomValidity("");
+}
+});
+
+const name = document.getElementById("nombre");
+
+name.addEventListener("input", function (event) {
+if (name.validity.patternMismatch) {
+    
+     name.setCustomValidity("Ingresa solo letras en este campo");
+} else {
+    
+    name.setCustomValidity("");
+}
+});
+
+const mail = document.getElementById("mail");
+
+mail = document.getElementById("mail").value;
+if( !(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/.test(valor)) ) {
+
+
+  return false;
+} else{
+    mail.setCustomValidity("Ingresa una Direccion de Correo Electronico valido");
+});
+
+
+
+
+
+
+        </script>
     <script src="js/jquery-3.4.1.slim.min.js" ></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
